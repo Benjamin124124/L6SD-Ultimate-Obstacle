@@ -21,6 +21,8 @@ public class Player1Controller : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        controller.skinWidth -= 0.0799f;
+        controller.minMoveDistance -= 0.0009f;
         jump = new Vector3(0.0f, 2.0f, 0.0f);
     }
 
@@ -34,7 +36,7 @@ public class Player1Controller : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized * speed * Time.deltaTime;
         
         if(direction.magnitude >= 0.1f)
         {
